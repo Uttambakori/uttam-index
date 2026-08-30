@@ -22,17 +22,17 @@ export const PROJECTS = [
     },
   },
   {
-    id: "scrawl",
-    name: "scrawl",
-    thumbnail: "/assets/scrawl_thumbnail.jpg",
-    purpose: "in-browser canvas sketchpad",
+    id: "motif",
+    name: "motif",
+    thumbnail: "/assets/motif_thumbnail.jpg",
+    purpose: "pattern from a rule",
     story:
-      "a minimal, touch-first canvas scratchpad for quick wireframes, raw ideas, and traditional folk art. includes modular warli design elements to easily assemble tribal art motifs, with more regional styles in the works.",
-    url: "https://scrawl-omega.vercel.app",
+      "a generative drawing machine where every mark is mathematically generated from rules rather than stock assets. built to explore algorithmic patterns, geometric repeat systems, and procedural motifs directly in the browser.",
+    url: "https://scrawl-livid.vercel.app",
     mobileWarning: {
-      title: "scrawl works best on desktop.",
+      title: "motif requires desktop.",
       reason:
-        "scrawl features an expansive infinite digital whiteboard and modular tribal Warli motif assembler designed for fine mouse, stylus, or trackpad precision.",
+        "motif is a procedural drawing machine with rule-based pattern generators, algorithmic canvas renderers, and vector export designed for desktop screen real estate and mouse precision.",
     },
   },
 ];
