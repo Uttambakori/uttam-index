@@ -1,7 +1,6 @@
 export const PROFILE = {
   name: "uttam bakori",
   role: "visual & ui/ux designer",
-  studio: "digieagle inc",
   location: "india",
   email: "itsuttampatel@gmail.com",
   linkedin: "https://www.linkedin.com/in/uttambakori",

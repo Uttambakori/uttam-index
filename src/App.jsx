@@ -58,7 +58,7 @@ export default function App() {
           <p className="font-gelica text-2xl sm:text-3xl md:text-4xl text-[#2b1a07] leading-[1.4] font-medium">
             visual and ui/ux designer thinking about{" "}
             <span className="marker-underline font-semibold">how things should feel</span>{" "}
-            before how they look. designing product interfaces and brand systems at digieagle, and exploring small side tools for everyday creative workflows.
+            before how they look. designing product interfaces, brand visual systems, and exploring small side tools for everyday creative workflows.
           </p>
 
           {/* Action Links */}
@@ -83,8 +83,6 @@ export default function App() {
 
           <div className="text-xs text-[#2b1a07]/60 font-normal pt-1 flex items-center gap-2">
             <span>based in india</span>
-            <span>•</span>
-            <span>digieagle inc</span>
             <span>•</span>
             <span>open to collaborations</span>
           </div>
