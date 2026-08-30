@@ -219,7 +219,7 @@ export default function App() {
           <h2 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
             writing.
           </h2>
-          <span className="text-xs font-mono text-[#171717]/50">
+          <span className="text-xs text-[#171717]/50 font-normal">
             thoughts & essays
           </span>
         </div>
@@ -230,11 +230,10 @@ export default function App() {
             <div
               key={art.id}
               onClick={() => handleOpenArticle(art)}
-              className="superr-card p-6 sm:p-8 bg-[#fdfbf9] hover:bg-[#f7efe9]/40 transition-all cursor-pointer group space-y-3.5"
+              className="superr-card p-6 sm:p-8 bg-[#fdfbf9] hover:bg-[#f7efe9]/40 transition-all cursor-pointer group space-y-3"
             >
-              <div className="flex items-center justify-between text-xs font-mono text-[#2b1a07]/60">
-                <span>{art.date}</span>
-                <span>{art.readingTime}</span>
+              <div className="text-xs text-[#2b1a07]/50 font-normal">
+                {art.date}
               </div>
 
               <h3 className="display-title text-xl sm:text-2xl md:text-[26px] text-[#2b1a07] group-hover:text-[#ff6f1e] transition-colors">

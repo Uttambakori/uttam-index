@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, Share2, Check, Clock, Calendar, Sparkles } from "lucide-react";
+import { ArrowLeft, Share2, Check } from "lucide-react";
 import { LinkedinIcon } from "./Icons";
 import { PointingHandMark } from "./SuperrElements";
 import { PROFILE } from "../data/projects";
@@ -88,21 +88,9 @@ export default function ArticlePage({ article, onBack }) {
       <main className="flex-1 w-full max-w-[760px] mx-auto px-5 sm:px-8 pt-6 sm:pt-12 pb-16 sm:pb-24 space-y-8">
         
         {/* Meta Info */}
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-[#2b1a07]/65">
-            <span className="px-2.5 py-0.5 rounded-full bg-[#f7efe9] border border-[#171717]/15 text-[#ff6f1e] font-semibold">
-              {article.category || "essay"}
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
-              <span>{article.date}</span>
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" />
-              <span>{article.readingTime}</span>
-            </span>
+        <div className="space-y-3">
+          <div className="text-xs sm:text-sm text-[#2b1a07]/50 font-normal">
+            {article.date}
           </div>
 
           <h1 className="font-gelica text-3xl sm:text-4xl md:text-5xl text-[#2b1a07] font-semibold leading-[1.15] tracking-tight">
