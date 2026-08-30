@@ -172,24 +172,37 @@ export default function ArticlePage({ article, onBack }) {
           ))}
         </article>
 
-        {/* 4. AUTHOR FOOTER CARD (Perfect Alignment & No Awkward Wrapping) */}
-        <div className="pt-8 sm:pt-10 border-t border-[#171717]/10">
-          <div className="superr-card p-6 sm:p-8 bg-[#fdfbf9] rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
-            <div className="space-y-2 flex-1 min-w-0">
-              <h3 className="font-gelica text-xl sm:text-2xl font-semibold text-[#2b1a07] tracking-tight whitespace-nowrap">
-                written by uttam bakori
-              </h3>
-              <p className="text-xs sm:text-sm text-[#171717]/75 leading-relaxed max-w-lg font-normal">
-                visual & ui/ux designer thinking about how things should feel before how they look. exploring creative tooling and digital interactions.
-              </p>
+        {/* 4. REDESIGNED AUTHOR FOOTER CARD (Flawless Hierarchy & Left Alignment) */}
+        <div className="pt-10 border-t border-[#171717]/10">
+          <div className="superr-card p-7 sm:p-9 bg-[#fdfbf9] rounded-[24px] space-y-5">
+            
+            {/* Header: Author Mark, Name & Role */}
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-full bg-[#f7efe9] border border-[#171717] flex items-center justify-center flex-shrink-0 shadow-xs">
+                <PointingHandMark className="w-5 h-5 text-[#171717]" />
+              </div>
+              <div className="space-y-0.5">
+                <h3 className="font-gelica text-xl sm:text-2xl font-semibold text-[#2b1a07] tracking-tight leading-tight">
+                  written by uttam bakori.
+                </h3>
+                <p className="text-xs text-[#2b1a07]/60 font-normal">
+                  visual & ui/ux designer
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 flex-shrink-0 pt-2 md:pt-0">
+            {/* Bio: Spans comfortably across card width without awkward line breaks */}
+            <p className="text-sm sm:text-[15px] text-[#171717]/85 leading-relaxed font-normal max-w-2xl">
+              thinking about how things should feel before how they look. designing product interfaces, brand visual systems, and exploring small side tools for everyday creative workflows.
+            </p>
+
+            {/* Actions: Clean divider, perfectly aligned with card content */}
+            <div className="pt-4 border-t border-[#171717]/10 flex flex-wrap items-center gap-3">
               <a
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="superr-pill-btn text-xs py-2 px-3.5 cursor-pointer whitespace-nowrap"
+                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>connect on linkedin</span>
@@ -197,11 +210,12 @@ export default function ArticlePage({ article, onBack }) {
 
               <button
                 onClick={onBack}
-                className="superr-pill-btn text-xs py-2 px-3.5 cursor-pointer whitespace-nowrap"
+                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
               >
                 <span>more projects →</span>
               </button>
             </div>
+
           </div>
         </div>
 
