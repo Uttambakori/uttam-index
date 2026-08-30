@@ -4,7 +4,6 @@ export const PROFILE = {
   location: "india",
   email: "itsuttampatel@gmail.com",
   linkedin: "https://www.linkedin.com/in/uttambakori",
-  behance: "https://behance.net/uttampatel11",
 };
 
 export const PROJECTS = [
@@ -16,6 +15,11 @@ export const PROJECTS = [
     story:
       "a lightweight web studio to turn still artwork or wide midjourney images into beat-synced 9:16 vertical reels without opening heavy video software. cuts snap directly to musical transients right in the browser.",
     url: "https://flashcut-reel-studio.vercel.app",
+    mobileWarning: {
+      title: "flashcut requires desktop.",
+      reason:
+        "flashcut is a timeline video editor with real-time audio beat transient analysis, 60fps canvas rendering, and 1080p hardware video muxing. these tools require a desktop browser and mouse for frame-accurate editing.",
+    },
   },
   {
     id: "scrawl",
@@ -25,39 +29,74 @@ export const PROJECTS = [
     story:
       "a minimal, touch-first canvas scratchpad for quick wireframes, raw ideas, and traditional folk art. includes modular warli design elements to easily assemble tribal art motifs, with more regional styles in the works.",
     url: "https://scrawl-omega.vercel.app",
+    mobileWarning: {
+      title: "scrawl works best on desktop.",
+      reason:
+        "scrawl features an expansive infinite digital whiteboard and modular tribal Warli motif assembler designed for fine mouse, stylus, or trackpad precision.",
+    },
   },
 ];
 
 export const ARTICLES = [
   {
     id: "the-outlier-problem-in-ai-prediction",
+    slug: "the-outlier-problem-in-ai-prediction",
     title: "the outlier problem in ai prediction.",
     date: "february 2026",
     readingTime: "4 min read",
+    category: "essay // ai & design",
     excerpt:
       "large language models work by predicting the most statistically likely next word based on patterns learned from massive amounts of text. this means the model gravitates toward the center of the distribution—the average, the conventional. why the moments that change the world are the ones that probably wouldn't come next.",
-    content: [
+    sections: [
       {
         heading: "how ai prediction works",
         paragraphs: [
-          "Large language models work by predicting the most statistically likely next word (or token) based on patterns learned from massive amounts of text. At its core, the model asks: \"Given everything before this point, what word/response would most probably come next?\"",
-          "This means the model gravitates toward the center of the distribution—the average, the conventional, the consensus answer.",
+          "Large language models work by predicting the most statistically likely next word (or token) based on patterns learned from massive amounts of text. At its core, the model asks: \"Given everything before this point, what word or response would most probably come next?\"",
+          "This means the model naturally gravitates toward the center of the distribution—the average, the conventional, the consensus answer.",
         ],
       },
       {
         heading: "what this means in practice",
         paragraphs: [
-          "The AI is trained to favor the fat middle—the safe, common, well-represented response.",
+          "The AI is structurally trained to favor the fat middle—the safe, common, and well-represented response.",
         ],
       },
       {
         heading: "why outliers matter",
+        paragraphs: [
+          "The most meaningful breakthroughs in history were never the median prediction:",
+        ],
         bullets: [
           "Scientific breakthroughs were once outlier ideas (heliocentrism, germ theory, plate tectonics).",
           "Creative genius often means seeing connections nobody else sees.",
           "Interesting conversation often comes from unexpected angles.",
           "Innovation is almost by definition an outlier—something that departs from the norm.",
-          "Humor often depends on subverting expectations.",
+          "Humor fundamentally depends on subverting expectations.",
+        ],
+      },
+      {
+        heading: "scenario comparisons",
+        table: [
+          {
+            scenario: "What's a chair for?",
+            likely: "Sitting",
+            outlier: "A chair is a social contract about where power sits in a room.",
+          },
+          {
+            scenario: "Medical diagnosis",
+            likely: "Common illness",
+            outlier: "The rare underlying condition that actually fits the symptoms.",
+          },
+          {
+            scenario: "Business strategy",
+            likely: "Follow industry best practices",
+            outlier: "The counterintuitive move that disrupts the entire category.",
+          },
+          {
+            scenario: "Art & expression",
+            likely: "Something that resembles existing art",
+            outlier: "Something that redefines what art can be.",
+          },
         ],
       },
       {

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ExternalLink, ArrowUpRight, Copy, Check, Monitor, BookOpen } from "lucide-react";
 import ConnectModal from "./components/ConnectModal";
 import DesktopWarningModal from "./components/DesktopWarningModal";
-import ArticleModal from "./components/ArticleModal";
+import ArticlePage from "./components/ArticlePage";
 import { LinkedinIcon } from "./components/Icons";
 import { PointingHandMark } from "./components/SuperrElements";
 import { PROFILE, PROJECTS, ARTICLES } from "./data/projects";
@@ -10,8 +10,40 @@ import { PROFILE, PROJECTS, ARTICLES } from "./data/projects";
 export default function App() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [desktopWarningProject, setDesktopWarningProject] = useState(null);
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [activeArticle, setActiveArticle] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+
+  // URL route sync: Support /writing/... or ?article=...
+  useEffect(() => {
+    const handleLocation = () => {
+      const path = window.location.pathname;
+      const search = new URLSearchParams(window.location.search);
+      const articleSlug = search.get("article") || path.replace("/writing/", "").replace("/", "");
+
+      if (articleSlug && articleSlug !== "") {
+        const found = ARTICLES.find((a) => a.slug === articleSlug || a.id === articleSlug);
+        if (found) {
+          setActiveArticle(found);
+          return;
+        }
+      }
+      setActiveArticle(null);
+    };
+
+    handleLocation();
+    window.addEventListener("popstate", handleLocation);
+    return () => window.removeEventListener("popstate", handleLocation);
+  }, []);
+
+  const handleOpenArticle = (article) => {
+    setActiveArticle(article);
+    window.history.pushState({}, "", `/writing/${article.slug}`);
+  };
+
+  const handleBackToIndex = () => {
+    setActiveArticle(null);
+    window.history.pushState({}, "", "/");
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE.email);
@@ -36,6 +68,16 @@ export default function App() {
       window.open(project.url, "_blank", "noopener,noreferrer");
     }
   };
+
+  // If viewing dedicated article page, render ArticlePage
+  if (activeArticle) {
+    return (
+      <ArticlePage
+        article={activeArticle}
+        onBack={handleBackToIndex}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#fdfbf9] text-[#171717] flex flex-col font-sans selection:bg-[#ff6f1e] selection:text-[#fdfbf9]">
@@ -111,7 +153,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3. SIDE PROJECTS (With Minimal Cinematic Thumbnails & No Cluttered Tags) */}
+      {/* 3. SIDE PROJECTS */}
       <section id="work" className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pb-16 sm:pb-24 space-y-6 sm:space-y-8">
         
         {/* Section Header */}
@@ -143,7 +185,7 @@ export default function App() {
                   />
                 </div>
 
-                {/* Card Content (Clean & Minimal: Title + Story, Zero Cluttered Tags) */}
+                {/* Card Content */}
                 <div className="p-6 sm:p-7 space-y-3">
                   <h3 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
                     {project.name}.
@@ -187,7 +229,7 @@ export default function App() {
           {ARTICLES.map((art) => (
             <div
               key={art.id}
-              onClick={() => setSelectedArticle(art)}
+              onClick={() => handleOpenArticle(art)}
               className="superr-card p-6 sm:p-8 bg-[#fdfbf9] hover:bg-[#f7efe9]/40 transition-all cursor-pointer group space-y-3.5"
             >
               <div className="flex items-center justify-between text-xs font-mono text-[#2b1a07]/60">
@@ -205,7 +247,7 @@ export default function App() {
 
               <div className="pt-2">
                 <span className="text-xs font-semibold text-[#ff6f1e] group-hover:underline flex items-center gap-1 font-gelica">
-                  <span>read article</span>
+                  <span>open article in new page</span>
                   <span>→</span>
                 </span>
               </div>
@@ -214,7 +256,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 5. FOOTER BRAND BAND */}
+      {/* 5. FOOTER BRAND BAND (Behance Removed as Requested) */}
       <footer className="w-full bg-[#ff6f1e] rounded-t-[40px] sm:rounded-t-[56px] text-[#fdfbf9] pt-12 pb-10 sm:pt-14 sm:pb-12 px-5 sm:px-12 mt-auto">
         <div className="max-w-[1000px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           
@@ -227,6 +269,7 @@ export default function App() {
             </p>
           </div>
 
+          {/* Social / Email (Behance removed) */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-semibold font-gelica">
             <a
               href={PROFILE.linkedin}
@@ -235,15 +278,6 @@ export default function App() {
               className="px-4 py-2 rounded-[20px] bg-[#fdfbf9] text-[#171717] hover:bg-[#f7efe9] transition-colors shadow-xs"
             >
               linkedin
-            </a>
-
-            <a
-              href={PROFILE.behance}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-[20px] bg-[#fdfbf9] text-[#171717] hover:bg-[#f7efe9] transition-colors shadow-xs"
-            >
-              behance
             </a>
 
             <button
@@ -276,12 +310,6 @@ export default function App() {
       <DesktopWarningModal
         project={desktopWarningProject}
         onClose={() => setDesktopWarningProject(null)}
-      />
-
-      <ArticleModal
-        article={selectedArticle}
-        isOpen={Boolean(selectedArticle)}
-        onClose={() => setSelectedArticle(null)}
       />
 
     </div>

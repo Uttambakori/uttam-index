@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { X, Mail, Check, ExternalLink } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./Icons";
+import { LinkedinIcon } from "./Icons";
 import { PROFILE } from "../data/projects";
 
 export default function ConnectModal({ isOpen, onClose }) {
@@ -34,10 +34,10 @@ export default function ConnectModal({ isOpen, onClose }) {
         </div>
 
         <p className="text-xs text-[#171717]/80 leading-relaxed font-normal">
-          open for product design collaborations, visual systems, or informal chats about typography and agentic prototyping.
+          open for product design collaborations, visual systems, or informal chats about typography and creative workflows.
         </p>
 
-        {/* Action Buttons in Superr style */}
+        {/* Action Buttons */}
         <div className="space-y-2.5 pt-1">
           {/* LinkedIn Button */}
           <a
@@ -70,20 +70,6 @@ export default function ConnectModal({ isOpen, onClose }) {
               <span className="text-[11px] text-[#171717]/50 font-semibold">copy</span>
             )}
           </button>
-
-          {/* GitHub Button */}
-          <a
-            href={PROFILE.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between w-full p-3.5 rounded-[20px] bg-[#fdfbf9] text-[#171717] border-[1.5px] border-[#171717] hover:bg-[#f7efe9] font-gelica text-xs font-semibold transition-all shadow-[0px_1px_2px_rgba(0,0,0,0.25)] cursor-pointer"
-          >
-            <div className="flex items-center gap-2.5">
-              <GithubIcon className="w-4 h-4 text-[#171717]" />
-              <span>view github repositories</span>
-            </div>
-            <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-          </a>
         </div>
       </div>
     </div>
