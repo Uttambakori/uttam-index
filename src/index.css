@@ -1,77 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  /* Slush Colors */
-  --color-carbon: #000000;
-  --color-paper-white: #ffffff;
-  --color-sky-wash: #dceeff;
-  --color-concrete-gray: #cccccc;
-  --color-soft-mist: #e9e9e9;
-  --color-electric-blue: #4da2ff;
-  --color-mint-pop: #55db9c;
-  --color-lavender: #e9ccff;
-  --color-ember: #fb4903;
-  --color-sunburst: #ffd731;
-  --color-voltage-violet: #5c4ade;
+  /* Superr Colors */
+  --color-cream-paper: #fdfbf9;
+  --color-charcoal: #171717;
+  --color-cocoa-ink: #2b1a07;
+  --color-true-black: #000000;
+  --color-dew-drop: #f7efe9;
+  --color-marker-orange: #ff6f1e;
+  --color-burnt-sienna: #ce500a;
+  --color-sky-sticker: #3b82f6;
+  --color-bubblegum-sticker: #ff66cf;
+  --color-sprout-sticker: #22c55e;
+  --color-shadow-mist: #bebcbb;
 
   /* Typography */
-  --font-lateral: "Antonio", "Bowlby One", "Montserrat", system-ui, -apple-system, sans-serif;
-  --font-aeonik-pro: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-gelica: "Fraunces", Georgia, serif;
+  --font-geist: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-hand: "Caveat", cursive;
 }
 
 @layer base {
   body {
-    font-family: var(--font-aeonik-pro);
-    background-color: var(--color-paper-white);
-    color: var(--color-carbon);
+    font-family: var(--font-geist);
+    background-color: var(--color-cream-paper);
+    color: var(--color-charcoal);
     overflow-x: hidden;
   }
-}
 
-/* Crushed Leading Display Typography */
-.font-display-crushed {
-  font-family: var(--font-lateral);
-  line-height: 0.78;
-  letter-spacing: -0.02em;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-/* Hand-cut sticker border rule */
-.sticker-outline {
-  border: 1px solid #000000;
-}
-
-/* Continuous marquee animation */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
+  h1, h2, h3, .font-gelica {
+    font-family: var(--font-gelica);
   }
-  100% {
-    transform: translateX(-50%);
+
+  .font-hand {
+    font-family: var(--font-hand);
   }
 }
 
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 22s linear infinite;
+/* Superr Lowercase Display */
+.display-title {
+  font-family: var(--font-gelica);
+  font-weight: 600;
+  line-height: 1.08;
+  color: var(--color-cocoa-ink);
+  letter-spacing: -0.01em;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* Superr Pill Button (Cream fill, 1.5px Charcoal border, subtle shadow) */
+.superr-pill-btn {
+  background-color: #fdfbf9;
+  border: 1.5px solid #171717;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-family: var(--font-gelica);
+  font-size: 16px;
+  font-weight: 500;
+  color: #171717;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
-/* Soft 3D float */
-@keyframes inflatableFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
+.superr-pill-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 3px 6px 0px;
 }
 
-.animate-inflatable {
-  animation: inflatableFloat 5s ease-in-out infinite;
+.superr-pill-btn:active {
+  transform: translateY(1px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+}
+
+/* Marker Underline */
+.marker-underline {
+  position: relative;
+  color: #ff6f1e;
+  display: inline-block;
+}
+
+.marker-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6f1e;
+  border-radius: 2px;
+  transform: rotate(-0.5deg);
+}
+
+/* Card Surface Elevation */
+.superr-card {
+  background-color: #fdfbf9;
+  border: 1.5px solid #171717;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 20px 0px;
+}
+
+/* Sticker Label */
+.name-label-sticker {
+  background-color: #ffffff;
+  border: 1.5px solid #171717;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 12px 0px;
 }

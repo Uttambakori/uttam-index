@@ -15,57 +15,59 @@ export default function ConnectModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-[#FFFFFF] border border-[#E5E2D9] rounded-3xl max-w-sm w-full p-6 shadow-2xl space-y-5 select-none animate-scaleUp">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#171717]/40 backdrop-blur-xs animate-fadeIn font-sans">
+      <div className="bg-[#fdfbf9] border-[1.5px] border-[#171717] rounded-[16px] max-w-sm w-full p-7 shadow-[0px_4px_24px_rgba(0,0,0,0.12)] space-y-5 select-none animate-scaleUp">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between border-b border-[#171717]/10 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <h3 className="text-base font-bold text-[#1E1E1E]">Let's Connect</h3>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff6f1e]" />
+            <h3 className="font-gelica text-xl font-semibold text-[#2b1a07]">
+              say hello.
+            </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-full text-zinc-400 hover:text-zinc-800 hover:bg-zinc-100 transition-colors cursor-pointer"
+            className="p-1 rounded-full text-[#171717]/60 hover:text-[#171717] hover:bg-[#f7efe9] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <p className="text-xs text-zinc-600 leading-relaxed">
-          Open for product design collaborations, AI prototype development, or creative engineering discussions.
+        <p className="text-xs text-[#171717]/80 leading-relaxed font-normal">
+          open for product design collaborations, visual systems, or informal chats about typography and agentic prototyping.
         </p>
 
-        {/* Action Buttons */}
+        {/* Action Buttons in Superr style */}
         <div className="space-y-2.5 pt-1">
           {/* LinkedIn Button */}
           <a
             href={PROFILE.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between w-full p-3 rounded-2xl bg-[#0A66C2] text-white hover:bg-[#004182] font-semibold text-xs transition-all shadow-sm cursor-pointer"
+            className="flex items-center justify-between w-full p-3.5 rounded-[20px] bg-[#fdfbf9] text-[#171717] border-[1.5px] border-[#171717] hover:bg-[#f7efe9] font-gelica text-xs font-semibold transition-all shadow-[0px_1px_2px_rgba(0,0,0,0.25)] cursor-pointer"
           >
             <div className="flex items-center gap-2.5">
-              <LinkedinIcon className="w-4 h-4" />
-              <span>Connect on LinkedIn</span>
+              <LinkedinIcon className="w-4 h-4 text-[#ff6f1e]" />
+              <span>connect on linkedin</span>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+            <ExternalLink className="w-3.5 h-3.5 opacity-60" />
           </a>
 
           {/* Copy Email Button */}
           <button
             onClick={handleCopyEmail}
-            className="flex items-center justify-between w-full p-3 rounded-2xl bg-[#F6F5F0] hover:bg-[#ECEAE3] text-[#1E1E1E] border border-[#E5E2D9] font-medium text-xs transition-all cursor-pointer"
+            className="flex items-center justify-between w-full p-3.5 rounded-[20px] bg-[#fdfbf9] text-[#171717] border-[1.5px] border-[#171717] hover:bg-[#f7efe9] font-gelica text-xs font-semibold transition-all shadow-[0px_1px_2px_rgba(0,0,0,0.25)] cursor-pointer"
           >
             <div className="flex items-center gap-2.5">
-              <Mail className="w-4 h-4 text-zinc-500" />
-              <span className="font-mono">{PROFILE.email}</span>
+              <Mail className="w-4 h-4 text-[#ff6f1e]" />
+              <span className="font-mono text-xs">{PROFILE.email}</span>
             </div>
             {copied ? (
-              <span className="flex items-center gap-1 text-emerald-600 text-[11px] font-bold">
-                <Check className="w-3.5 h-3.5" /> Copied
+              <span className="flex items-center gap-1 text-[#ff6f1e] text-[11px] font-bold">
+                <Check className="w-3.5 h-3.5" /> copied!
               </span>
             ) : (
-              <span className="text-[11px] text-zinc-400 font-semibold">Copy</span>
+              <span className="text-[11px] text-[#171717]/50 font-semibold">copy</span>
             )}
           </button>
 
@@ -74,13 +76,13 @@ export default function ConnectModal({ isOpen, onClose }) {
             href={PROFILE.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between w-full p-3 rounded-2xl bg-[#1E1E1E] text-white hover:bg-zinc-800 font-semibold text-xs transition-all cursor-pointer"
+            className="flex items-center justify-between w-full p-3.5 rounded-[20px] bg-[#fdfbf9] text-[#171717] border-[1.5px] border-[#171717] hover:bg-[#f7efe9] font-gelica text-xs font-semibold transition-all shadow-[0px_1px_2px_rgba(0,0,0,0.25)] cursor-pointer"
           >
             <div className="flex items-center gap-2.5">
-              <GithubIcon className="w-4 h-4" />
-              <span>View GitHub Repositories</span>
+              <GithubIcon className="w-4 h-4 text-[#171717]" />
+              <span>view github repositories</span>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+            <ExternalLink className="w-3.5 h-3.5 opacity-60" />
           </a>
         </div>
       </div>
