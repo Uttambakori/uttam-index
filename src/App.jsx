@@ -144,10 +144,9 @@ export default function App() {
             </a>
           </div>
 
-          <div className="text-xs text-[#2b1a07]/60 font-normal pt-1 flex flex-wrap items-center gap-2">
-            <span>based in india</span>
-            <span>•</span>
-            <span>open to collaborations</span>
+          <div className="text-xs text-[#2b1a07]/65 font-normal pt-1 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>open to collaborations or hire for projects</span>
           </div>
 
         </div>
