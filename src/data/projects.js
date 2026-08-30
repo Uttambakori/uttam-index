@@ -3,7 +3,7 @@ export const PROFILE = {
   subtitle: "Creative Technologist & Product Designer",
   status: "AI-Native Prototyper",
   experience: "6+ Shipped Tools",
-  bio: "Designing tactile, high-craft digital tools with AI. Exploring sound-sync algorithms, creative canvas engines, and kinetic UI.",
+  bio: "Designing tactile, high-craft digital tools with AI agents. Exploring audio-reactive video montage, vector canvas engines, and kinetic UI.",
   location: "India",
   countryFlag: "🇮🇳",
   linkedin: "https://www.linkedin.com/in/uttambakori",
@@ -25,7 +25,7 @@ export const PROJECTS = [
     status: "Live & Shipped",
     color: "#F9CA3F",
     textColor: "#573F00",
-    asset: "/assets/yellow_flower.jpg",
+    asset: "/assets/film_reel.png",
     tags: ["Web Audio API", "Spectral Flux", "WebCodecs", "React"],
   },
   {
@@ -39,7 +39,7 @@ export const PROJECTS = [
     status: "Live on Vercel",
     color: "#38B2F8",
     textColor: "#0C4A6E",
-    asset: "/assets/blue_sphere.jpg",
+    asset: "/assets/stylus_pen.png",
     tags: ["HTML5 Canvas", "Vector Engine", "Interaction Design"],
   },
 ];
