@@ -184,24 +184,24 @@ export default function ArticlePage({ article, onBack }) {
           ))}
         </article>
 
-        {/* 4. AUTHOR FOOTER CARD (Refined & Balanced) */}
-        <div className="pt-8 border-t border-[#171717]/10">
-          <div className="superr-card p-6 sm:p-8 bg-[#fdfbf9] rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <h3 className="font-gelica text-xl sm:text-2xl font-semibold text-[#2b1a07] tracking-tight">
+        {/* 4. AUTHOR FOOTER CARD (Perfect Alignment & No Awkward Wrapping) */}
+        <div className="pt-8 sm:pt-10 border-t border-[#171717]/10">
+          <div className="superr-card p-6 sm:p-8 bg-[#fdfbf9] rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+            <div className="space-y-2 flex-1 min-w-0">
+              <h3 className="font-gelica text-xl sm:text-2xl font-semibold text-[#2b1a07] tracking-tight whitespace-nowrap">
                 written by uttam bakori
               </h3>
-              <p className="text-xs sm:text-sm text-[#171717]/75 leading-relaxed max-w-md">
+              <p className="text-xs sm:text-sm text-[#171717]/75 leading-relaxed max-w-lg font-normal">
                 visual & ui/ux designer thinking about how things should feel before how they look. exploring creative tooling and digital interactions.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 flex-shrink-0 pt-1 md:pt-0">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 flex-shrink-0 pt-2 md:pt-0">
               <a
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
+                className="superr-pill-btn text-xs py-2 px-3.5 cursor-pointer whitespace-nowrap"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>connect on linkedin</span>
@@ -209,7 +209,7 @@ export default function ArticlePage({ article, onBack }) {
 
               <button
                 onClick={onBack}
-                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
+                className="superr-pill-btn text-xs py-2 px-3.5 cursor-pointer whitespace-nowrap"
               >
                 <span>more projects →</span>
               </button>
