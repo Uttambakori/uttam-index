@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { ExternalLink, ArrowUpRight, Copy, Check, Monitor } from "lucide-react";
+import { ExternalLink, ArrowUpRight, Copy, Check, Monitor, BookOpen } from "lucide-react";
 import ConnectModal from "./components/ConnectModal";
 import DesktopWarningModal from "./components/DesktopWarningModal";
+import ArticleModal from "./components/ArticleModal";
 import { LinkedinIcon } from "./components/Icons";
 import { PointingHandMark } from "./components/SuperrElements";
-import { PROFILE, PROJECTS } from "./data/projects";
+import { PROFILE, PROJECTS, ARTICLES } from "./data/projects";
 
 export default function App() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [desktopWarningProject, setDesktopWarningProject] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
@@ -38,9 +40,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#fdfbf9] text-[#171717] flex flex-col font-sans selection:bg-[#ff6f1e] selection:text-[#fdfbf9]">
       
-      {/* 1. TOP MINIMAL NAVIGATION (Responsive) */}
+      {/* 1. TOP MINIMAL NAVIGATION */}
       <header className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 py-6 sm:py-8 flex items-center justify-between">
-        {/* Brand Mark: Hand icon in Charcoal */}
         <a
           href="#"
           className="flex items-center gap-2 group transition-transform hover:-rotate-6"
@@ -70,8 +71,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* 2. HERO: PURE MINIMAL DESCRIPTION (Responsive fluid typography) */}
-      <section className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pt-8 sm:pt-16 pb-16 sm:pb-24">
+      {/* 2. HERO: PURE MINIMAL DESCRIPTION */}
+      <section className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pt-8 sm:pt-16 pb-14 sm:pb-20">
         <div className="max-w-[740px] space-y-6 sm:space-y-8">
           
           {/* Main Description */}
@@ -110,8 +111,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3. SIDE PROJECTS (Responsive Grid) */}
-      <section id="work" className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pb-20 sm:pb-28 space-y-6 sm:space-y-8">
+      {/* 3. SIDE PROJECTS (With Minimal Cinematic Thumbnails & No Cluttered Tags) */}
+      <section id="work" className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pb-16 sm:pb-24 space-y-6 sm:space-y-8">
         
         {/* Section Header */}
         <div className="border-b border-[#171717]/10 pb-3 sm:pb-4 flex items-center justify-between">
@@ -126,96 +127,94 @@ export default function App() {
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-          
-          {/* PROJECT 1: FLASHCUT PRO */}
-          <div className="superr-card p-6 sm:p-7 flex flex-col justify-between min-h-[290px] bg-[#fdfbf9]">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#ff6f1e] font-mono">
-                  {PROJECTS[0].badge}
-                </span>
-                <span className="text-[11px] font-mono text-[#171717]/50">
-                  web app
-                </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+          {PROJECTS.map((project) => (
+            <div
+              key={project.id}
+              className="superr-card overflow-hidden flex flex-col justify-between bg-[#fdfbf9] group hover:shadow-md transition-shadow"
+            >
+              <div>
+                {/* 16:9 Cinematic Thumbnail */}
+                <div className="w-full aspect-[16/9] overflow-hidden border-b-[1.5px] border-[#171717] bg-[#f7efe9]">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
+                  />
+                </div>
+
+                {/* Card Content (Clean & Minimal: Title + Story, Zero Cluttered Tags) */}
+                <div className="p-6 sm:p-7 space-y-3">
+                  <h3 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
+                    {project.name}.
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#171717]/80 leading-[1.6] font-normal">
+                    {project.story}
+                  </p>
+                </div>
               </div>
 
-              <h3 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
-                {PROJECTS[0].name}.
-              </h3>
-
-              <p className="text-xs sm:text-sm text-[#171717]/85 leading-[1.6] font-normal">
-                {PROJECTS[0].story}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {PROJECTS[0].tags.map((t) => (
-                  <span
-                    key={t}
-                    className="px-2.5 py-0.5 rounded-[20px] bg-[#f7efe9] border border-[#171717]/15 text-[11px] font-medium text-[#2b1a07]"
-                  >
-                    {t}
-                  </span>
-                ))}
+              {/* Launch Action */}
+              <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-1">
+                <button
+                  onClick={() => handleLaunch(project)}
+                  className="superr-pill-btn text-xs py-2 px-4 cursor-pointer"
+                >
+                  <span>launch {project.name} →</span>
+                </button>
               </div>
             </div>
-
-            <div className="pt-6">
-              <button
-                onClick={() => handleLaunch(PROJECTS[0])}
-                className="superr-pill-btn text-xs py-2 px-4 cursor-pointer"
-              >
-                <span>launch flashcut →</span>
-              </button>
-            </div>
-          </div>
-
-          {/* PROJECT 2: SCRAWL */}
-          <div className="superr-card p-6 sm:p-7 flex flex-col justify-between min-h-[290px] bg-[#fdfbf9]">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#ff6f1e] font-mono">
-                  {PROJECTS[1].badge}
-                </span>
-                <span className="text-[11px] font-mono text-[#171717]/50">
-                  web app
-                </span>
-              </div>
-
-              <h3 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
-                {PROJECTS[1].name}.
-              </h3>
-
-              <p className="text-xs sm:text-sm text-[#171717]/85 leading-[1.6] font-normal">
-                {PROJECTS[1].story}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {PROJECTS[1].tags.map((t) => (
-                  <span
-                    key={t}
-                    className="px-2.5 py-0.5 rounded-[20px] bg-[#f7efe9] border border-[#171717]/15 text-[11px] font-medium text-[#2b1a07]"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6">
-              <button
-                onClick={() => handleLaunch(PROJECTS[1])}
-                className="superr-pill-btn text-xs py-2 px-4 cursor-pointer"
-              >
-                <span>open sketchpad →</span>
-              </button>
-            </div>
-          </div>
-
+          ))}
         </div>
       </section>
 
-      {/* 4. FOOTER BRAND BAND (Responsive) */}
+      {/* 4. WRITING / ARTICLES SECTION */}
+      <section id="writing" className="w-full max-w-[1000px] mx-auto px-5 sm:px-8 pb-20 sm:pb-28 space-y-6 sm:space-y-8">
+        
+        {/* Section Header */}
+        <div className="border-b border-[#171717]/10 pb-3 sm:pb-4 flex items-center justify-between">
+          <h2 className="display-title text-2xl sm:text-3xl text-[#2b1a07]">
+            writing.
+          </h2>
+          <span className="text-xs font-mono text-[#171717]/50">
+            thoughts & essays
+          </span>
+        </div>
+
+        {/* Article Cards */}
+        <div className="space-y-4">
+          {ARTICLES.map((art) => (
+            <div
+              key={art.id}
+              onClick={() => setSelectedArticle(art)}
+              className="superr-card p-6 sm:p-8 bg-[#fdfbf9] hover:bg-[#f7efe9]/40 transition-all cursor-pointer group space-y-3.5"
+            >
+              <div className="flex items-center justify-between text-xs font-mono text-[#2b1a07]/60">
+                <span>{art.date}</span>
+                <span>{art.readingTime}</span>
+              </div>
+
+              <h3 className="display-title text-xl sm:text-2xl md:text-[26px] text-[#2b1a07] group-hover:text-[#ff6f1e] transition-colors">
+                {art.title}
+              </h3>
+
+              <p className="text-xs sm:text-sm text-[#171717]/80 leading-[1.65] font-normal">
+                {art.excerpt}
+              </p>
+
+              <div className="pt-2">
+                <span className="text-xs font-semibold text-[#ff6f1e] group-hover:underline flex items-center gap-1 font-gelica">
+                  <span>read article</span>
+                  <span>→</span>
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. FOOTER BRAND BAND */}
       <footer className="w-full bg-[#ff6f1e] rounded-t-[40px] sm:rounded-t-[56px] text-[#fdfbf9] pt-12 pb-10 sm:pt-14 sm:pb-12 px-5 sm:px-12 mt-auto">
         <div className="max-w-[1000px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           
@@ -249,9 +248,19 @@ export default function App() {
 
             <button
               onClick={handleCopyEmail}
-              className="px-4 py-2 rounded-[20px] border border-[#fdfbf9] text-[#fdfbf9] hover:bg-white/10 transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-[20px] bg-[#fdfbf9] text-[#171717] hover:bg-[#f7efe9] transition-colors shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
-              {copiedEmail ? "copied email!" : "copy email"}
+              {copiedEmail ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>copy email</span>
+                </>
+              )}
             </button>
           </div>
 
@@ -266,9 +275,15 @@ export default function App() {
 
       <DesktopWarningModal
         project={desktopWarningProject}
-        isOpen={Boolean(desktopWarningProject)}
         onClose={() => setDesktopWarningProject(null)}
       />
+
+      <ArticleModal
+        article={selectedArticle}
+        isOpen={Boolean(selectedArticle)}
+        onClose={() => setSelectedArticle(null)}
+      />
+
     </div>
   );
 }
