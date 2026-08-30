@@ -172,13 +172,10 @@ export default function ArticlePage({ article, onBack }) {
                 </ul>
               )}
 
-              {/* Highlighted Pull Quote */}
+              {/* Highlighted Pull Quote Card */}
               {sec.quote && (
-                <div className="my-8 p-6 sm:p-8 rounded-3xl bg-[#f7efe9] border-[1.5px] border-[#171717] shadow-xs relative overflow-hidden">
-                  <div className="absolute -right-4 -bottom-6 text-8xl font-gelica text-[#ff6f1e]/10 pointer-events-none select-none">
-                    ”
-                  </div>
-                  <blockquote className="font-gelica text-lg sm:text-xl md:text-2xl text-[#2b1a07] italic leading-snug">
+                <div className="my-8 sm:my-10 p-7 sm:p-10 rounded-[24px] bg-[#f7efe9] border-[1.5px] border-[#171717] shadow-xs">
+                  <blockquote className="font-gelica text-lg sm:text-xl md:text-[22px] text-[#2b1a07] italic leading-[1.55] tracking-tight">
                     "{sec.quote}"
                   </blockquote>
                 </div>
@@ -187,27 +184,24 @@ export default function ArticlePage({ article, onBack }) {
           ))}
         </article>
 
-        {/* 4. AUTHOR FOOTER CARD */}
-        <div className="pt-10 border-t border-[#171717]/10">
-          <div className="superr-card p-6 sm:p-8 bg-[#fdfbf9] flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 text-center sm:text-left">
+        {/* 4. AUTHOR FOOTER CARD (Refined & Balanced) */}
+        <div className="pt-8 border-t border-[#171717]/10">
+          <div className="superr-card p-6 sm:p-8 bg-[#fdfbf9] rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-2">
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff6f1e]" />
-                <h3 className="font-gelica text-xl font-semibold text-[#2b1a07]">
-                  written by uttam bakori
-                </h3>
-              </div>
-              <p className="text-xs text-[#171717]/75 max-w-md">
+              <h3 className="font-gelica text-xl sm:text-2xl font-semibold text-[#2b1a07] tracking-tight">
+                written by uttam bakori
+              </h3>
+              <p className="text-xs sm:text-sm text-[#171717]/75 leading-relaxed max-w-md">
                 visual & ui/ux designer thinking about how things should feel before how they look. exploring creative tooling and digital interactions.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-2.5 flex-shrink-0">
+            <div className="flex flex-wrap items-center gap-3 flex-shrink-0 pt-1 md:pt-0">
               <a
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="superr-pill-btn text-xs py-2 px-4 cursor-pointer"
+                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>connect on linkedin</span>
@@ -215,7 +209,7 @@ export default function ArticlePage({ article, onBack }) {
 
               <button
                 onClick={onBack}
-                className="superr-pill-btn text-xs py-2 px-4 cursor-pointer"
+                className="superr-pill-btn text-xs py-2.5 px-4 cursor-pointer"
               >
                 <span>more projects →</span>
               </button>

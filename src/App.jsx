@@ -247,7 +247,7 @@ export default function App() {
 
               <div className="pt-2">
                 <span className="text-xs font-semibold text-[#ff6f1e] group-hover:underline flex items-center gap-1 font-gelica">
-                  <span>open article in new page</span>
+                  <span>read article</span>
                   <span>→</span>
                 </span>
               </div>
