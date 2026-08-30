@@ -1,52 +1,77 @@
 @import "tailwindcss";
 
+:root {
+  /* Slush Colors */
+  --color-carbon: #000000;
+  --color-paper-white: #ffffff;
+  --color-sky-wash: #dceeff;
+  --color-concrete-gray: #cccccc;
+  --color-soft-mist: #e9e9e9;
+  --color-electric-blue: #4da2ff;
+  --color-mint-pop: #55db9c;
+  --color-lavender: #e9ccff;
+  --color-ember: #fb4903;
+  --color-sunburst: #ffd731;
+  --color-voltage-violet: #5c4ade;
+
+  /* Typography */
+  --font-lateral: "Antonio", "Bowlby One", "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-aeonik-pro: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+}
+
 @layer base {
   body {
-    font-family: "Outfit", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    font-family: var(--font-aeonik-pro);
+    background-color: var(--color-paper-white);
+    color: var(--color-carbon);
+    overflow-x: hidden;
   }
 }
 
-/* Custom Clover / Flower 4-Petal Avatar Mask */
-.clover-mask {
-  mask-image: radial-gradient(circle at 35% 35%, black 28%, transparent 29%),
-              radial-gradient(circle at 65% 35%, black 28%, transparent 29%),
-              radial-gradient(circle at 35% 65%, black 28%, transparent 29%),
-              radial-gradient(circle at 65% 65%, black 28%, transparent 29%),
-              radial-gradient(circle at 50% 50%, black 35%, transparent 36%);
-  mask-size: 100% 100%;
-  -webkit-mask-image: radial-gradient(circle at 35% 35%, black 28%, transparent 29%),
-                      radial-gradient(circle at 65% 35%, black 28%, transparent 29%),
-                      radial-gradient(circle at 35% 65%, black 28%, transparent 29%),
-                      radial-gradient(circle at 65% 65%, black 28%, transparent 29%),
-                      radial-gradient(circle at 50% 50%, black 35%, transparent 36%);
-  -webkit-mask-size: 100% 100%;
+/* Crushed Leading Display Typography */
+.font-display-crushed {
+  font-family: var(--font-lateral);
+  line-height: 0.78;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-/* Tactile 3D Float Animation */
-@keyframes softFloat {
+/* Hand-cut sticker border rule */
+.sticker-outline {
+  border: 1px solid #000000;
+}
+
+/* Continuous marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Soft 3D float */
+@keyframes inflatableFloat {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-5px) rotate(1.5deg);
+    transform: translateY(-8px) rotate(1deg);
   }
 }
 
-.animate-soft-float {
-  animation: softFloat 4s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
+.animate-inflatable {
+  animation: inflatableFloat 5s ease-in-out infinite;
 }
