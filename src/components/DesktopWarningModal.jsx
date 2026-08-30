@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { X, Monitor, Copy, Check, ExternalLink, ArrowRight } from "lucide-react";
 
-export default function DesktopWarningModal({ project, isOpen, onClose }) {
+export default function DesktopWarningModal({ project, isOpen = Boolean(project), onClose }) {
   const [copied, setCopied] = useState(false);
 
   if (!isOpen || !project) return null;

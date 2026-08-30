@@ -53,12 +53,13 @@ export default function App() {
 
   const isMobile = () => {
     if (typeof window === "undefined") return false;
-    return (
-      window.innerWidth < 768 ||
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    );
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera || "";
+    const isMobileUA =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile/i.test(
+        userAgent
+      );
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    return isMobileUA || (isTouch && window.innerWidth < 1024) || window.innerWidth < 768;
   };
 
   const handleLaunch = (project) => {
@@ -307,6 +308,7 @@ export default function App() {
 
       <DesktopWarningModal
         project={desktopWarningProject}
+        isOpen={Boolean(desktopWarningProject)}
         onClose={() => setDesktopWarningProject(null)}
       />
 
